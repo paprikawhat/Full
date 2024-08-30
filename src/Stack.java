@@ -1,8 +1,12 @@
 public class Stack {
-    int[] stack = new int[10];
-    int tos = -1;
+    int[] stack;
+    int tos;
+    Stack(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
+        stack = new int[size];
+        tos = -1;
+    }
     void push (int num) {
-        if (num == 9) {
+        if (num == stack.length) {
             System.out.println("Стек заполнен.");
         } else {
             stack[++tos] = num;

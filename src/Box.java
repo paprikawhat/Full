@@ -1,8 +1,8 @@
 abstract class Box {
-    private double height; // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ
-    private double width;
-    private double depth;
-    double volume() {
+    double height; // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ
+    double width;
+    double depth;
+    double volume() { // МЕТОД ВЫЧИСЛЕНИЯ ОБЪЁМА
         return height * width * depth;
     }
     Box(Box ob) { // КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
@@ -30,10 +30,10 @@ class BoxShipping extends Box { // РАСШИРЯЮЩИЙ КЛАСС
         weight = ob.weight;
         isEasy = ob.isEasy;
     }
-    BoxShipping(double h, double w, double d, double m, boolean s) { //КОНСТРУКТО С УКАЗАНИЕМ ВСЕХ ПАРАМЕТРОВ
+    BoxShipping(double h, double w, double d, double m) { //КОНСТРУКТО С УКАЗАНИЕМ ПАРАМЕТРОВ
         super(h, w, d);
         weight = m;
-        isEasy = s;
+        isEasy = weight <= 50 || h + w + d > 300 || h > 150 || w > 150  || d > 150;
     }
     BoxShipping() { //КОНСТРУКТОР ПО-УМОЛЧАНИЮ
         super();
