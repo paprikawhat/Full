@@ -1,5 +1,5 @@
 public class Stack {
-    int[] stack = new int[];
+    int[] stack = new int[10];
     int tos = -1;
     void push (int num) {
         if (num == 9) {
