@@ -8,6 +8,15 @@ public class Box {
     double volume() { // МЕТОД ВЫЧИСЛЕНИЯ ОБЪЁМА
         return height * width * depth;
     }
+    void param() {
+        System.out.println("Размеры: " + height + " x " + width + " x " + depth + "\nВес:" + weight);
+        if (this.isEasy) {
+            System.out.println("Отправить!");
+        } else {
+            System.out.println("Сложность с отправлением.");
+        }
+        System.out.println("Цена отправления: "); //
+    }
     Box(Box ob) { // КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
         height = ob.height;
         width = ob.width;
