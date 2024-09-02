@@ -1,7 +1,10 @@
-abstract class Box {
+public class Box {
     double height; // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ
     double width;
     double depth;
+    double weight; // ДОБАВЛЕНИЕ ПАРАМЕТРОВ
+    boolean isEasy;
+    float price;
     double volume() { // МЕТОД ВЫЧИСЛЕНИЯ ОБЪЁМА
         return height * width * depth;
     }
@@ -9,35 +12,23 @@ abstract class Box {
         height = ob.height;
         width = ob.width;
         depth = ob.depth;
+        weight = ob.weight;
+        price = ob.price;
+        isEasy = ob.isEasy;
     }
     Box() { // КОНСТРУКТОР ПО-УМОЛЧАНИЮ
         height = -1;
         width = -1;
         depth = -1;
+        weight = -1;
+        isEasy = true;
     }
-    Box(double h, double w, double d) { // КОНСТРУКТОР С УКАЗАНИЕМ РАЗМЕРОВ
+    Box(double h, double w, double d, double wh) { // КОНСТРУКТОР С УКАЗАНИЕМ РАЗМЕРОВ
         height = h;
         width = w;
         depth = d;
+        weight = wh;
+        isEasy = weight <= 1000 || h + w + d > 150 || h > 150 || w > 150  || d > 150;
     }
 
-}
-class BoxShipping extends Box { // РАСШИРЯЮЩИЙ КЛАСС
-    double weight; // ДОБАВЛЕНИЕ ПАРАМЕТРОВ
-    boolean isEasy;
-    BoxShipping(BoxShipping ob) { // КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
-        super(ob);
-        weight = ob.weight;
-        isEasy = ob.isEasy;
-    }
-    BoxShipping(double h, double w, double d, double m) { //КОНСТРУКТО С УКАЗАНИЕМ ПАРАМЕТРОВ
-        super(h, w, d);
-        weight = m;
-        isEasy = weight <= 50 || h + w + d > 300 || h > 150 || w > 150  || d > 150;
-    }
-    BoxShipping() { //КОНСТРУКТОР ПО-УМОЛЧАНИЮ
-        super();
-        weight = -1;
-        isEasy = false;
-    }
 }
