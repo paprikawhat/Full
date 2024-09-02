@@ -1,4 +1,4 @@
-public class Stack {
+class Stack {
     int[] stack;
     int tos;
     Stack(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
