@@ -1,7 +1,9 @@
-class Stack {
+package Box;
+
+class InBox {
     int[] stack;
     int tos;
-    Stack(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
+    InBox(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
         stack = new int[size];
         tos = -1;
     }

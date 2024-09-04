@@ -1,5 +1,7 @@
+package Box;
+
 class Box {
-    // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ ОБРАЩЕНИЯ С ПАРАМЕТРАМИ
+    // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ
     private double height;
     void h(double n) {height = n;}
     private double width;
