@@ -1,4 +1,6 @@
-public class CreateBox {
+package Box;
+
+public class CreateBox{
     public static void main(String[] args) {
         Box newBox = new Box(20, 30, 50, 6000);
         newBox.param();
