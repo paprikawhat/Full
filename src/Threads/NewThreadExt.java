@@ -1,4 +1,4 @@
-package Threads;
+package src.Threads;
 
 class NewThreadExt extends Thread{
     NewThreadExt() {
