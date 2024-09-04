@@ -27,7 +27,7 @@ class ExtendThread {
                 System.out.println("Главный поток: " + i);
                 Thread.sleep(1000);
             }
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException e) {
             System.out.println("Главный поток прерван.");
         }
         System.out.println("Завершение главного потока.");

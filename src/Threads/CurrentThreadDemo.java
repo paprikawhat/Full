@@ -1,11 +1,10 @@
 package Threads;
-
 public class CurrentThreadDemo {
     public static void main(String[] args) {
         Thread t = Thread.currentThread();
-        System.out.println("Текущий поток: " + t);
+        System.out.print("Текущий поток: " + t);
         t.setName("Отсчет до нуля.");
-        System.out.println("Новое имя потока: " + t.getName());
+        System.out.println(" переименован в: " + t.getName());
         try {
             for (int n = 5; n >= 0; n--) {
                 Thread.sleep(1000);
