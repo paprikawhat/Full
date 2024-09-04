@@ -1,4 +1,4 @@
-package Threads;
+package src.Threads;
 
 class NewThreadRun implements Runnable {
     Thread t;

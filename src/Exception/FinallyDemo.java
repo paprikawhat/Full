@@ -1,4 +1,4 @@
-package Exception;
+package src.Exception;
 
 public class FinallyDemo {
     // Сгенерировать исключение в нутри метода .
