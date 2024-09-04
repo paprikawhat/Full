@@ -1,8 +1,26 @@
 package src.Threads;
+  // Класс реализующий многопоточность.
+  class Caller implements Runnable{
+      Call target;
+      String msg;
+      Thread t;
+      public  Caller(Call trg, String s) {
+          target = trg;
+          msg = s;
+          t = new Thread(this);
+      }
+      public void run() {
+          target.call(msg);
+      }
+  }
+  /* Как только поток входит в какой-либо синхронизированный
+    метод в экземпляре, никакой другой поток не может входить в любой
+    другой синхронизированный метод в том же экземпляре. */
 
-class Callme {
-    void call(String msg) {
-        System.out.println("[");
+class Call {
+  // Метод может быть вызван лишь одним потоком за раз
+    synchronized void call(String msg) {
+        System.out.print("[" + msg);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -11,24 +29,11 @@ class Callme {
         System.out.println("]");
     }
 }
-class Caller implements Runnable{
-    String msg;
-    Callme target;
-    Thread t;
-    public  Caller(Callme trg, String s) {
-        msg = s;
-        target = trg;
-        t = new Thread(this);
-    }
-    public void run() {
-        target.call(msg);
-    }
-}
 class Sync {
     public static void main(String[] args) {
-        Callme target = new Callme();
+        Call target = new Call();
         Caller ob1 = new Caller(target, "Hello");
-        Caller ob2 = new Caller(target, "Synchronizd");
+        Caller ob2 = new Caller(target, "Synchronized");
         Caller ob3 = new Caller(target, "World");
 
         ob1.t.start();
