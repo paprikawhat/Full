@@ -1,4 +1,4 @@
-package Exception;
+package src.Exception;
 
 public class Exc0 {
     public static void main ( String [ ] args ) {

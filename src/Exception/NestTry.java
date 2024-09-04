@@ -1,4 +1,4 @@
-package Exception;
+package src.Exception;
 
 public class NestTry {
     static void nestTry( int a ) {

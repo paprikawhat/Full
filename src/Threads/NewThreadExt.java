@@ -3,7 +3,7 @@ package Threads;
 class NewThreadExt extends Thread{
     NewThreadExt() {
         super("Demo Thread");
-        System.out.println("Доччерний поток: " + this);
+        System.out.println("Дочерний поток: " + this);
     }
     // Это точка входа для второго потока
     public void run() {

@@ -1,4 +1,4 @@
-package Box;
+package src.Box;
 
 class Box {
     // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ

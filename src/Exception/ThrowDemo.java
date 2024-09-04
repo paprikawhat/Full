@@ -1,4 +1,4 @@
-package Exception;
+package src.Exception;
 
 public class ThrowDemo{
     static void demo() {
