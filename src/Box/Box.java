@@ -3,16 +3,17 @@ package src.Box;
 class Box {
     // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ
     String name;
+    private int size;
     private double height;
-    void setHeight(double n) {height = n;}
+    final void setHeight(double n) {height = n;}
     private double width;
-    void setWidth(double n) {width = n;}
+    final void setWidth(double n) {width = n;}
     private double depth;
-    void setDepth(double n) {depth = n;}
+    final void setDepth(double n) {depth = n;}
     private double weight;
-    void setWeight(double n) {weight = n;}
+    final void setWeight(double n) {weight = n;}
     private float price;
-    void setPrice(float n) {price = n;}
+    void setPrice(float n) {price = (float) n;}
     private boolean isEasy;
     boolean e() {isEasy = (weight <= 10000) && (height+width+depth < 150) && (height < 100 && width < 100 && depth < 100);
         return isEasy;
@@ -56,27 +57,28 @@ class Box {
     }
 
 }
-class InBox {
-    int[] stack;
+  // Класс расширяющий Box для наполнения содержимым
+class InBox extends Box{
+    String[] stack;
     int tos;
     InBox(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
-        stack = new int[size];
+        stack = new String[size];
         tos = -1;
     }
-    void push (int num) {
+    void push (String in) {
         if (tos == stack.length - 1) {
-            int[] temp = new int[stack.length*2];
-            for (int i = 0; i < num; i++) {
+            String[] temp = new String[stack.length*2];
+            for (int i = 0; i < tos; i++) {
                 temp[i] = stack[i];
                 stack = temp;
             }
-        } else stack[++tos] = num;
+        } else stack[++tos] = in;
     }
-    int pop() {
+    String pop() {
         if (tos <=0) {
-            System.out.println("Коробка пуста.");
-            return 0;
-        } else {
+            return "Коробка пуста.";
+        }
+        else {
             return stack[tos--];
         }
     }
