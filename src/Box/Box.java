@@ -2,34 +2,48 @@ package src.Box;
 
 class Box {
     // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ
-    String name;
-    private int size;
+    String name = "";
+    Inside inside = new Inside();
     private double height;
-    final void setHeight(double n) {height = n;}
+    final void setHeight(double n) {
+        height = n;
+    }
     private double width;
-    final void setWidth(double n) {width = n;}
+    final void setWidth(double n) {
+        width = n;
+    }
     private double depth;
-    final void setDepth(double n) {depth = n;}
+    final void setDepth(double n) {
+        depth = n;
+    }
     private double weight;
-    final void setWeight(double n) {weight = n;}
+    final void setWeight(double n) {
+        weight = n;
+    }
     private float price;
-    void setPrice(float n) {price = (float) n;}
+    void setPrice(float n) {
+        price = (float) n;
+    }
     private boolean isEasy;
-    boolean e() {isEasy = (weight <= 10000) && (height+width+depth < 150) && (height < 100 && width < 100 && depth < 100);
+    boolean e() {
+        isEasy = (weight <= 10000) &&
+                (height + width + depth < 150) &&
+                (height < 100 && width < 100 && depth < 100);
         return isEasy;
     }
     void volume() {
-        double v = height*width*depth;
-        System.out.println("Объём коробки: " + v/1000 + " литров");
+        double v = height * width * depth;
+        System.out.println("Объём коробки: " + v / 1000 + " литров");
     }
     void param() {
-        System.out.println("Размеры: " + height + " x " + width + " x " + depth + "\nВес: " + weight/1000 + " кг.");
-        if (isEasy) {
+        System.out.println("Создана коробка: " + this.name);
+        System.out.println("Размеры: " + height + " x " + width + " x " + depth + "\nВес: " + weight / 1000 + " кг.");
+        if (e()) {
             System.out.println("Отправить!");
         } else {
             System.out.println("Сложность с отправлением.");
         }
-        System.out.println("Цена отправления: ");
+        System.out.println("Цена отправления: " + price);
     }
     Box(Box ob) {// КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
         name = ob.name;
@@ -39,6 +53,7 @@ class Box {
         weight = ob.weight;
         price = ob.price;
         isEasy = ob.isEasy;
+        inside = ob.inside;
     }
     Box() { // КОНСТРУКТОР ПО-УМОЛЧАНИЮ
         name = "Пустое место.";
@@ -47,8 +62,10 @@ class Box {
         depth = -1;
         weight = -1;
         price = 0;
+        inside.push("");
     }
-    Box(String n, double h, double w, double d, double wh) { // КОНСТРУКТОР С УКАЗАНИЕМ РАЗМЕРОВ
+    Box(String n, String str, double h, double w, double d, double wh) { // КОНСТРУКТОР С УКАЗАНИЕМ РАЗМЕРОВ
+        inside.push(str);
         name = n;
         height = h;
         width = w;
@@ -56,38 +73,38 @@ class Box {
         weight = wh;
     }
 
-}
-  // Класс расширяющий Box для наполнения содержимым
-class InBox extends Box{
-    String[] stack;
-    int tos;
-    InBox(int size) { //ИНИЦИАЛИЗАЦИЯ МАССИВА
-        stack = new String[size];
-        tos = -1;
+    static class BoxCreateDemo {
+        public static void main(String[] args) {
+            Box newBox = new Box("demoBox", "Печенье.", 20, 30, 50, 16000);
+            newBox.param();
+            Box newBox2 = new Box();
+            newBox2.param();
+        }
     }
-    void push (String in) {
-        if (tos == stack.length - 1) {
-            String[] temp = new String[stack.length*2];
-            for (int i = 0; i < tos; i++) {
-                temp[i] = stack[i];
-                stack = temp;
+    // Класс внутреннего содержания коробки
+    static class Inside {
+        String[] inside ;
+        private int tos;
+        Inside() {
+            inside = new String[1];
+            tos = -1;
+        }
+        final void push(String in) {
+            if (tos == inside.length - 1) {
+                String[] temp = new String[inside.length * 2];
+                for (int i = 0; i < tos; i++) {
+                    temp[i] = inside[i];
+                    inside = temp;
+                }
+            } else inside[++tos] = in;
+        }
+
+        final String pop() {
+            if (tos <= 0) {
+                return "Коробка пуста.";
+            } else {
+                return inside[tos--];
             }
-        } else stack[++tos] = in;
-    }
-    String pop() {
-        if (tos <=0) {
-            return "Коробка пуста.";
         }
-        else {
-            return stack[tos--];
-        }
-    }
-}
-class CreateBox{
-    public static void main(String[] args) {
-        Box newBox = new Box("demoBox",20, 30, 50, 6000);
-        newBox.param();
-        Box newBox2 = new Box();
-        newBox2.param();
     }
 }
