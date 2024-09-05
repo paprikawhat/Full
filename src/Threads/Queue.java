@@ -6,9 +6,9 @@ class Q {
     boolean valueSet = false; // Переменная для проверки условия ожидания.
 
     synchronized void put(int n) {
-        while (valueSet) {
-            try {
-                wait(); // Всегда внутри цикла проверяющего условие ожидания потока.
+        while (valueSet) {  // Оператор wait() всегда должен находиться
+            try {           // внутри цикла проверяющего условие ожидания потока.
+                wait();
             } catch (InterruptedException e) {
                 System.out.println("Перехвачено исключение IE.");
             }
