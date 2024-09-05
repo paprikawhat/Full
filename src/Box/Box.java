@@ -1,6 +1,6 @@
 package src.Box;
 
-class Box {
+public class Box {
     // ОБЪЯВЛЕНИЕ ПАРАМЕТРОВ И МЕТОДОВ
     String name = "";
     Inside inside = new Inside();
@@ -37,7 +37,8 @@ class Box {
     }
     void param() {
         System.out.println("Создана коробка: " + this.name);
-        System.out.println("Размеры: " + height + " x " + width + " x " + depth + "\nВес: " + weight / 1000 + " кг.");
+        System.out.println("Размеры: " + height + " x " + width + " x " +
+                depth + "\nВес: " + weight / 1000 + " кг.");
         if (e()) {
             System.out.println("Отправить!");
         } else {
@@ -45,6 +46,7 @@ class Box {
         }
         System.out.println("Цена отправления: " + price);
     }
+
     Box(Box ob) {// КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
         name = ob.name;
         height = ob.height;
@@ -62,10 +64,10 @@ class Box {
         depth = -1;
         weight = -1;
         price = 0;
-        inside.push("");
+        inside.put("");
     }
     Box(String n, String str, double h, double w, double d, double wh) { // КОНСТРУКТОР С УКАЗАНИЕМ РАЗМЕРОВ
-        inside.push(str);
+        inside.put(str);
         name = n;
         height = h;
         width = w;
@@ -75,31 +77,37 @@ class Box {
 
     static class BoxCreateDemo {
         public static void main(String[] args) {
-            Box newBox = new Box("demoBox", "Печенье.", 20, 30, 50, 16000);
+            Box newBox = new Box(args[0], args[1], 20, 30, 50, 16000);
             newBox.param();
             Box newBox2 = new Box();
             newBox2.param();
         }
     }
-    // Класс внутреннего содержания коробки
+
+    // Класс внутреннего содержания коробки, реализованный стеком.
     static class Inside {
-        String[] inside ;
-        private int tos;
+        String[] inside;
+        String name;
+        private int tos = -1;
         Inside() {
             inside = new String[1];
-            tos = -1;
+            inside[0] =name = "";
         }
-        final void push(String in) {
+        Inside(String thing) {
+            inside = new String[1];
+            inside[0] = name = thing;
+        }
+        final void put(String thing) {
             if (tos == inside.length - 1) {
-                String[] temp = new String[inside.length * 2];
+                String[] temp = new String[inside.length + 1];
                 for (int i = 0; i < tos; i++) {
                     temp[i] = inside[i];
                     inside = temp;
+                    inside[tos] = thing;
                 }
-            } else inside[++tos] = in;
+            } else inside[++tos] = thing;
         }
-
-        final String pop() {
+        final String take() {
             if (tos <= 0) {
                 return "Коробка пуста.";
             } else {
