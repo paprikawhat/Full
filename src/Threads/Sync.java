@@ -3,8 +3,8 @@ package src.Threads;
   метод в экземпляре, никакой другой поток не может входить в любой
   другой синхронизированный метод в том же экземпляре. */
 class Call {
-    // Метод может быть вызван лишь одним потоком за раз
-    synchronized void call(String msg) {
+    // Синхронизированный метод может быть вызван лишь одним потоком за раз
+    /*synchronized*/void call(String msg) {
         System.out.print("[" + msg);
         try {
             Thread.sleep(1000);
@@ -14,34 +14,36 @@ class Call {
         System.out.println("]");
     }
 }
-  // Класс реализующий многопоточность.
-  class Caller implements Runnable{
-      Call target;
-      String msg;
-      Thread t;
-      public  Caller(Call trg, String s) {
-          target = trg;
-          msg = s;
-          t = new Thread(this);
-      }
-      public void run() {
-        //Синхронизируются
-          synchronized (target) {
-              target.call(msg);
-          }
-      }
-  }
+// Класс реализующий многопоточность.class Caller implements Runnable{
+class Caller implements Runnable{
+    Call target;
+    String msg;
+    Thread t;
+    public  Caller(Call trg, String s) {
+        target = trg;
+        msg = s;
+        t = new Thread(this);
+    }
+    public void run() {
+        {
+            // Синхронизация методов объекта.
+            synchronized(target) { // Объект.
+                target.call(msg); // Методы.
+            }
+        }
+    }
+}
 class Sync {
     public static void main(String[] args) {
         Call target = new Call();
         Caller ob1 = new Caller(target, "Hello");
         Caller ob2 = new Caller(target, "Synchronized");
         Caller ob3 = new Caller(target, "World");
-      // Запуск потоков.
+        // Запуск потоков.
         ob1.t.start();
         ob2.t.start();
         ob3.t.start();
-      // Ожидание окончаний работы потоков
+        // Ожидание окончаний работы потоков
         try {
             ob1.t.join();
             ob2.t.join();
