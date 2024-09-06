@@ -1,4 +1,5 @@
-package Threads;
+package src.Threads;
+
 public class CurrentThreadDemo {
     public static void main(String[] args) {
         Thread t = Thread.currentThread();

@@ -5,30 +5,19 @@ public class Box {
     String name = "";
     Inside inside = new Inside();
     private double height;
-    final void setHeight(double n) {
-        height = n;
-    }
+    final void setHeight(double n) { height = n;}
     private double width;
-    final void setWidth(double n) {
-        width = n;
-    }
+    final void setWidth(double n) { width = n; }
     private double depth;
-    final void setDepth(double n) {
-        depth = n;
-    }
+    final void setDepth(double n) { depth = n; }
     private double weight;
-    final void setWeight(double n) {
-        weight = n;
-    }
-    private float price;
-    void setPrice(float n) {
-        price = (float) n;
-    }
+    final void setWeight(double n) { weight = n; }
+    float price;
+    void setPrice(float n) { price = (float) n; }
     private boolean isEasy;
     boolean e() {
-        isEasy = (weight <= 10000) &&
-                (height + width + depth < 150) &&
-                (height < 100 && width < 100 && depth < 100);
+        isEasy = (weight <= 10000) && (height < 100 && width < 100 && depth < 100)
+                && (height + width + depth < 150);
         return isEasy;
     }
     void volume() {
@@ -36,7 +25,7 @@ public class Box {
         System.out.println("Объём коробки: " + v / 1000 + " литров");
     }
     void param() {
-        System.out.println("Создана коробка: " + this.name);
+        System.out.println("Коробка: " + this.name);
         System.out.println("Размеры: " + height + " x " + width + " x " +
                 depth + "\nВес: " + weight / 1000 + " кг.");
         if (e()) {
@@ -46,7 +35,6 @@ public class Box {
         }
         System.out.println("Цена отправления: " + price);
     }
-
     Box(Box ob) {// КОНСТРУКТОР ДЛЯ КЛОНИРОВАНИЯ
         name = ob.name;
         height = ob.height;
@@ -74,45 +62,43 @@ public class Box {
         depth = d;
         weight = wh;
     }
-
-    static class BoxCreateDemo {
-        public static void main(String[] args) {
-            Box newBox = new Box(args[0], args[1], 20, 30, 50, 16000);
-            newBox.param();
-            Box newBox2 = new Box();
-            newBox2.param();
-        }
-    }
-
     // Класс внутреннего содержания коробки, реализованный стеком.
     static class Inside {
         String[] inside;
         String name;
         private int tos = -1;
-        Inside() {
-            inside = new String[1];
-            inside[0] =name = "";
-        }
-        Inside(String thing) {
-            inside = new String[1];
-            inside[0] = name = thing;
-        }
-        final void put(String thing) {
-            if (tos == inside.length - 1) {
-                String[] temp = new String[inside.length + 1];
-                for (int i = 0; i < tos; i++) {
-                    temp[i] = inside[i];
-                    inside = temp;
-                    inside[tos] = thing;
+            Inside() {
+                inside = new String[1];
+                inside[0] = name = "";
+            }
+            Inside(String thing) {
+                inside = new String[1];
+                inside[0] = name = thing;
+            }
+            final void put(String thing) {
+                if (tos == inside.length - 1) {
+                    String[] temp = new String[inside.length + 1];
+                    for (int i = 0; i < tos; i++) {
+                        temp[i] = inside[i];
+                        inside = temp;
+                        inside[tos] = thing;
+                    }
+                } else inside[++tos] = thing;
+            }
+            final String take() {
+                if (tos <= 0) {
+                    return "Коробка пуста.";
+                } else {
+                    return inside[tos--];
                 }
-            } else inside[++tos] = thing;
-        }
-        final String take() {
-            if (tos <= 0) {
-                return "Коробка пуста.";
-            } else {
-                return inside[tos--];
             }
         }
     }
+class BoxDemo {
+    public static void main(String[] args) {
+        Box newBox = new Box("", "", 20, 30, 50, 16000);
+        newBox.param();
+        Box newBox2 = new Box();
+    }
 }
+

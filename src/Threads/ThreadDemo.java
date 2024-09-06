@@ -1,8 +1,8 @@
 package src.Threads;
 
-class NewThreadRun implements Runnable {
+class NewThread implements Runnable {
     Thread t;
-    NewThreadRun() {
+    NewThread() {
         t = new Thread(this, "Поток 1");
         System.out.println("Дочерний поток: " + t);
     }
@@ -20,17 +20,17 @@ class NewThreadRun implements Runnable {
         System.out.println("Дочерний поток завершен.");
     }
 }
-class ThreadDemo {
+public class ThreadDemo {
     public static void main(String[] args) {
-        NewThreadRun nt = new NewThreadRun();
-        nt.t.start();
+        NewThread nt = new NewThread(); // Фабричный метод создания и запуска потока:
+        nt.t.start();                   // NewThread nt = NewThread.createAndStart()
         try {
             for(int i = 5; i > 0; i--) {
                 System.out.println("Главный поток: " + i);
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-                System.out.println("Главный поток прерван!");
+            System.out.println("Главный поток прерван!");
         }
         System.out.println("Завершение главного потока.");
     }
