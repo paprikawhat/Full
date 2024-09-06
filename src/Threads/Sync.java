@@ -4,7 +4,7 @@ package src.Threads;
   другой синхронизированный метод в том же экземпляре. */
 class Call {
     // Синхронизированный метод может быть вызван лишь одним потоком за раз
-    /*synchronized*/void call(String msg) {
+    /* <synchronized> */void call(String msg) {
         System.out.print("[" + msg);
         try {
             Thread.sleep(1000);
