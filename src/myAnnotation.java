@@ -34,4 +34,3 @@ class Meta {
         myMeth("Test", 200);;
     }
 }
-c
