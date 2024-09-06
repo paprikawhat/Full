@@ -8,6 +8,10 @@ import java.lang.reflect.*;
     String str();
     int val();
 }
+@Retention(RetentionPolicy.RUNTIME)
+@interface What {
+    String description();
+}
 class Meta {
     // Аннотировать метод.
     @MyAnnotation(str = "Пример аннотации", val = 100)
@@ -30,3 +34,4 @@ class Meta {
         myMeth("Test", 200);;
     }
 }
+c
