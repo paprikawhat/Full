@@ -42,6 +42,7 @@ public class ThreadSuspend {
     public static void main(String[] args) {
         newSusThread ob1 = new newSusThread("One");
         newSusThread ob2 = new newSusThread("Two");
+        // Запуск потоков.
         ob1.t.start();
         ob2.t.start();
         try {
