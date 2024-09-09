@@ -4,6 +4,7 @@ class newSusThread implements Runnable{
     String name;
     Thread t;
     boolean flag;
+    // Конструктор
     newSusThread(String threadName) {
         name = threadName;
         t = new Thread(this, name);
