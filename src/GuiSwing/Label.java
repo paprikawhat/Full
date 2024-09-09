@@ -31,7 +31,7 @@ public class Label {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Закрывать окно при закрытии
         // По умолчанию - скрыть
         redPanel.setSize(750,750);
-        redPanel.setBackground(Color.BLACK);
+        redPanel.setBackground(new Color(132,255,55, 154));
         redPanel.setBounds(70, 70, 500, 500);
         frame.add(redPanel);
         label.setText("FIRE! FIRE! FIRE!"); // Изменение текста в label
@@ -44,7 +44,7 @@ public class Label {
         // TOP, CENTER, BOTTOM относительно изображения
         label.setVerticalTextPosition(JLabel.TOP);
         // Изменение цвета текста
-        label.setForeground(new Color(245, 225, 100));
+        label.setForeground(new Color(255, 143, 143, 255));
         // Изменение шрифта текста
         label.setFont(new Font("myFont", Font.PLAIN, 50));
         label.setIconTextGap(-15); // Изменение расстояния между тестом и изображением

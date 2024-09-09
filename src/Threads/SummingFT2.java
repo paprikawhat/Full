@@ -16,7 +16,7 @@ public class SummingFT2 {
             thread.join();
         }
     }
-    // Выполнение основного потока
+    // Старт выполнение основного потока
     public static void main(String[] args) {
         // Запуск дополнительных потоков
         final TaskSummingNumbers firstTask = startSubTask(FROM_NUMBER_SECOND_THREAD, TO_NUMBER_SECOND_THREAD);
