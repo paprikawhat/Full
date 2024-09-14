@@ -10,25 +10,19 @@ public class SummingFT {
     private final static int TO_NUMBER_SECOND_THREAD = 1000;
     // Шаблон для вывода имени потока %s для String, %d для Digits
     private final static String TEMPLATE_MESSAGE_THREAD_NAME_AND_NUMBER = "%s : %d";
-    // Статический метод для проверки завершения выполнения переданных потоков
-    private static void waitingForJoin(final Thread... threads) throws InterruptedException {
-        for(final Thread thread : threads) {
-            thread.join();
-        }
-    }
     // Статический метод для вывода имени и номера потока
     private static void printThreadNameAndNumber(final int number) {
         System.out.printf(TEMPLATE_MESSAGE_THREAD_NAME_AND_NUMBER, Thread.currentThread().getName(), number);
     }
     // Выполнение основного потока
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Создание объекта реализующего через Runnable сложение всех чисел в потоке
         final TaskSummingNumbers firstTask = new TaskSummingNumbers(FROM_NUMBER_FIRST_THREAD, TO_NUMBER_FIST_THREAD);
-        // Запуск потока выполнения
-        startThread(firstTask);
         // Все то же самое для secondTask
         final TaskSummingNumbers secondTask = new TaskSummingNumbers(FROM_NUMBER_SECOND_THREAD, TO_NUMBER_SECOND_THREAD);
-        startThread(secondTask);
+        // startThread(secondTask);
+        // Ожидание выполнения всех переданных потоков через запуск виртуальных потоков
+        waitingForJoin(Thread.startVirtualThread(firstTask), Thread.startVirtualThread(secondTask));
         // Суммирование результатов работы потоков firstTask и secondTask
         final int result = firstTask.getResultNumber() + secondTask.getResultNumber();
         printThreadNameAndNumber(result);
@@ -37,6 +31,12 @@ public class SummingFT {
     private static void startThread(final Runnable runnable) {
         final Thread thread = new Thread(runnable);
         thread.start();
+    }
+    // Статический метод для проверки завершения выполнения переданных потоков
+    private static void waitingForJoin(final Thread... threads) throws InterruptedException {
+        for(final Thread thread : threads) {
+            thread.join();
+        }
     }
     private static final class TaskSummingNumbers implements Runnable {
         private static final int INITIAL_VALUE_RESULT_NUMBER = 0;

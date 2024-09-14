@@ -1,7 +1,12 @@
-package src;
+package src.Annotations;
 
 import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
 import java.lang.reflect.*;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 // @Retention определяет политику хранения аннотаций
 @Retention(RetentionPolicy.RUNTIME)
 @interface MyAnnotation {
@@ -14,6 +19,7 @@ import java.lang.reflect.*;
 }
 // Маркеры аннотации не содержат членов
 @Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
 @interface Marker {}
 // @Target используется перед аннотацией для указания через ({ElementType})
 class Meta {
