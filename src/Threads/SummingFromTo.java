@@ -2,7 +2,7 @@ package src.Threads;
 
 import java.util.stream.IntStream;
 
-public class SummingFT {
+public class SummingFromTo {
     // Объявление статических полей класса
     private final static int FROM_NUMBER_FIRST_THREAD = 1;
     private final static int TO_NUMBER_FIST_THREAD = 500;

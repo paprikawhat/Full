@@ -1,7 +1,7 @@
 package src.Exception;
 
 public class FinallyDemo {
-    // Сгенерировать исключение в нутри метода .
+    // Сгенерировать исключение внутри метода.
     static void procA() {
         try {
             System.out.println("Внутри метода procA()");
@@ -11,19 +11,19 @@ public class FinallyDemo {
             System.out.println("Блок finally метода procA()");
         }
     }
-    // Возвратить управление изнутри блока try .
+    // Возвратить управление изнутри блока try.
     static void procB() {
         try {
-            System.out.println("Внутри метода procB ( ) ");
-            return;
+            System.out.println("Внутри метода procB () ");
+        return;
         } finally {
             System.out.println("Блок finally метода procB ()");
         }
     }
-    // Выполнить блок try обычным образом .
+    // Выполнить блок try обычным образом.
     static void procC() {
         try {
-            System.out.println("Внутри метода procC ( ) ");
+            System.out.println("Внутри метода procC () ");
         } finally {
             System.out.println("Блок finally метода procC().");
         }
