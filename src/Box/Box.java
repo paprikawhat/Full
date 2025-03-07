@@ -15,12 +15,12 @@ public class Box {
     float price;
     void setPrice(float n) { price = (float) n; }
     private boolean isEasy;
-    boolean e() {
+    final boolean e() {
         isEasy = (weight <= 10000) && (height < 100 && width < 100 && depth < 100)
                 && (height + width + depth < 150);
         return isEasy;
     }
-    void volume() {
+    final void volume() {
         double v = height * width * depth;
         System.out.println("Объём коробки: " + v / 1000 + " литров");
     }
@@ -67,33 +67,33 @@ public class Box {
         String[] inside;
         String name;
         private int tos = -1;
-            Inside() {
-                inside = new String[1];
-                inside[0] = name = "";
-            }
-            Inside(String thing) {
-                inside = new String[1];
-                inside[0] = name = thing;
-            }
-            final void put(String thing) {
-                if (tos == inside.length - 1) {
-                    String[] temp = new String[inside.length + 1];
-                    for (int i = 0; i < tos; i++) {
-                        temp[i] = inside[i];
-                        inside = temp;
-                        inside[tos] = thing;
-                    }
-                } else inside[++tos] = thing;
-            }
-            final String take() {
-                if (tos <= 0) {
-                    return "Коробка пуста.";
-                } else {
-                    return inside[tos--];
+        Inside() {
+            inside = new String[1];
+            inside[0] = name = "";
+        }
+        Inside(String thing) {
+            inside = new String[1];
+            inside[0] = name = thing;
+        }
+        final void put(String thing) {
+            if (tos == inside.length - 1) {
+                String[] temp = new String[inside.length + 1];
+                for (int i = 0; i < tos; i++) {
+                    temp[i] = inside[i];
+                    inside = temp;
+                    inside[tos] = thing;
                 }
+            } else inside[++tos] = thing;
+        }
+        final String take() {
+            if (tos <= 0) {
+                return "Коробка пуста.";
+            } else {
+                return inside[tos--];
             }
         }
     }
+}
 class BoxDemo {
     public static void main(String[] args) {
         Box newBox = new Box("", "", 20, 30, 50, 16000);

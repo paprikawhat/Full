@@ -51,7 +51,7 @@ class PrintWriterDemo {
     public static void main(String[] args) {
         PrintWriter pw = new PrintWriter(System.out, true);
         pw.println("Текстовая строка");
-        int i = -7;
+        int i = -4;
         pw.println(i);
         double d =  0x3fd34a1;
         pw.println(d);
