@@ -3,7 +3,6 @@ package src.Lambdas;
 interface genFunc<T> {
     boolean func(T v1, T v2);
 }
-
 interface  genericFunc<T> {
     int func(T[] values, T v);
 }
@@ -28,7 +27,6 @@ class DayTemperature {
         return t > t2.t;
     }
 }
-
 class Counter {
     static <T> int counter(T[] vals, genFunc<T> f, T v) throws EmptyArray {
         int count = 0;

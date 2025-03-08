@@ -10,7 +10,7 @@ interface SomeFunction<T> {
 class DemoTest {
     public static void main(String[] args) {
         NumTest isEven = (n) -> (n%2) == 0;
-        NumTest isNegative = (n) -> n<0;
+        NumTest isNegative = (n) -> n < 0;
         if(isEven.test(5)) System.out.println("Yes");
         if(isNegative.test(48)) System.out.println("Yes");
     }
@@ -22,8 +22,7 @@ class DemoSomeFunction {
     public static void main(String[] args) {
         SomeFunction<String> reverseString = (str) -> {
             StringBuilder result = new StringBuilder();
-            int i;
-            for(i = str.length() - 1; i >= 0; i--) result.append(str.charAt(i));
+            for(int i = str.length() - 1; i >= 0; i--) result.append(str.charAt(i));
             return result.toString();
         };
         System.out.println(reverseString.func("Что у вас тут происходит!?"));
