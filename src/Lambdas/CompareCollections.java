@@ -64,23 +64,29 @@ class GenRefConstructor {
         MyGenClass<Double> cN1 = myFactory(constructor, 100.0);
         myGenericFunc<MyClass, Integer> constructor2 = MyClass::new;
         MyClass cN2 = myFactory(constructor2, 100);
+        //Объявление записи.
+        record Employee(String name, int idNum){}
+        //Создание записи.
+        Employee employee = new Employee("John", 5554);
+        System.out.printf("Employee %s has %d number.",employee.name(), employee.idNum());
     }
 }
 /*
+Предопределённые функциональные интерфейсы Java:
 UnaryOperator<T> Применяет унарную операцию к объекту типа Т
                  и возвращает результат тоже типа Т. Его метод
-                 называется apply ()
+                 называется apply()
 BinaryOperator<T> Применяет операцию к двум объектам типа Т
                   и возвращает результат тоже типа Т. Его метод
-                  называется apply ()
+                  называется apply()
 Consumer<T> Применяет операцию к объекту типа т. Его метод
-            называется accept ()
-Supplier<T> Возвращает объект типа Т. Его метод называется get ()
+            называется accept()
+Supplier<T> Возвращает объект типа Т. Его метод называется get()
 Function<T, R> Применяет операцию к объекту типа Т и возвращает
                в качестве результата объект типа R. Его метод
-               называется apply ()
+               называется apply()
 Predicate<T> Выясняет, удовлетворяет ли объект типа Т
              определенному ограничению. Возвращает булевское
              значение, указывающее на результат проверки. Его
-             метод называется test ()
+             метод называется test()
 */
