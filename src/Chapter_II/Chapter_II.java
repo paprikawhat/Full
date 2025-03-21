@@ -1,4 +1,4 @@
-package src;
+package src.Chapter_II;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 class MyBox {
-    static  int boxCount;
+    static  int boxCount = 1;
     private String name;
     private final float size;
     private boolean fragile;
@@ -16,7 +16,7 @@ class MyBox {
         this.name = name;
     }
     public String getName() {
-        return name;
+        return this.toString();
     }
     public void setFragile(boolean fragile) {
         this.fragile = fragile;
@@ -26,15 +26,15 @@ class MyBox {
         return this.weight;
     }
     public float getPrice() {
-        return fragile ? size * 1.25F : size;
+        return (fragile ? size * 1.25F : size);
     }
     @Override
     public String toString() {
-        return name;
+        return STR."\{name} \{getPrice()}";
     }
     MyBox() {
         Random random = new Random();
-        this.setName("Random box " + MyBox.boxCount);
+        this.setName("RB " + MyBox.boxCount);
         final int height = (random.nextInt(20, 40));
         final int width = (random.nextInt(20, 40));
         final int depth = (random.nextInt(40, 60));
@@ -49,9 +49,8 @@ class MyBox {
 }
 class Boxes {;
     ArrayList<MyBox> boxes = new ArrayList<>();
-    int boxesCount = boxes.size();
-    private float price;
     float getPrice() {
+        float price = 0;
         for(MyBox myBox : boxes) {
            price+=myBox.getPrice();
         }
@@ -66,8 +65,8 @@ class Boxes {;
         boxes.add(new MyBox(name));
         MyBox.boxCount++;
     }
-    public void removeBox(String name) {
-        for(MyBox box: boxes) {
+    public void removeBoxByName(String name) {
+        for(MyBox box : boxes) {
             if(box.getName().equals(name)) {
                 boxes.remove(box);
                 MyBox.boxCount--;
@@ -89,8 +88,14 @@ class Boxes {;
         }
         return boxesString.toString();
     }
-    Boxes(){
-        price = getPrice();
+    Boxes() {}
+    Boxes(int numberOfBoxes) {
+        this();
+        if(numberOfBoxes > 0) {
+            for (int i = numberOfBoxes; i > 0; i--) {
+                this.addNewRandomBox();
+            }
+        } else return;
     }
 }
 
@@ -98,22 +103,24 @@ public class Chapter_II {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(System.in, System.console().charset()));
-        Boxes myBoxes = new Boxes();
-        for(int i =0; i <100; i++){
-            myBoxes.addNewRandomBox();
-           // boxes.addNamedBox(bufferedReader.readLine());
-        }
+        long start = System.currentTimeMillis();
+        Boxes myBoxes = new Boxes(Integer.parseInt(bufferedReader.readLine()));
+        long end = System.currentTimeMillis();
+        long es = end - start;
         float price = myBoxes.getPrice();
         float weight = myBoxes.getTotalWeight();
-        System.out.printf("%s\n%.2f\n%.1f\n",myBoxes, price, weight);
-        System.out.printf("%.2f", new MyBox("*TEST*").getPrice());
+        System.out.printf("%s\n%.2f\n%.2f\n%d\n",myBoxes, price, weight, es);
+
         /*
         Runtime r = Runtime.getRuntime();
+        System.out.println(Runtime.version());
         Process p = null;
         try {
-          p = r.exec("explorer"); // Выполнение стандартных команд
+            p = r.exec("explorer"); // Выполнение стандартных команд
+            ProcessBuilder proc = new ProcessBuilder("notepad.exe", "test file");
+            proc.start();
         } catch (Exception e) {
-          System.out.println("AAAAA!!!!");
+          System.out.println("A!!!!");
         }
         */
     }

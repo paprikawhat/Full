@@ -4,7 +4,6 @@ package src.Threads;
 class Q {
     int n;
     boolean valueSet = false; // Переменная для проверки условия ожидания.
-
     synchronized void put(int n) {
         while (valueSet) {  // Оператор wait() всегда должен находиться
             try {           // внутри цикла проверяющего условие ожидания потока.
@@ -15,10 +14,10 @@ class Q {
         }
         this.n = n;
         valueSet = true;
-        System.out.println("Помещено: " + n);
+        System.out.println(STR."Помещено: \{n}");
         notify();
     }
-    synchronized int get() {
+    synchronized void get() {
         while(!valueSet) {
             try {
                 wait();
@@ -26,10 +25,9 @@ class Q {
                 System.out.println("Перехвачено исключение IE.");
             }
         }
-            System.out.println("Извлечено: " + n);
+            System.out.println(STR."Извлечено: \{n}");
             valueSet = false;
             notify();
-            return n;
     }
 }
 // Объект для реализации потока производителя.
@@ -43,9 +41,9 @@ class Producer implements Runnable{
     @Override //
     public void run() {
         int i = 0;
-        while(true) { // Поток бесконечного выполнения.
-            q.put(i++);
-        }
+            while(true) {
+                q.put(i++);
+            }
     }
 }
 // Объект для реализации потока потребителя.

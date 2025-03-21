@@ -14,7 +14,7 @@ public class FinallyDemo {
     // Возвратить управление изнутри блока try.
     static void procB() {
         try {
-            System.out.println("Внутри метода procB () ");
+            System.out.println("Внутри метода procB ()");
         return;
         } finally {
             System.out.println("Блок finally метода procB ()");
