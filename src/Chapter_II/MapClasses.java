@@ -19,6 +19,7 @@ class HashMapDemo {
             System.out.println(me.getValue());
         }
         System.out.println();
+        // Получение доступа к значению ключа через присваивание ссылки.
         double balance1 = hm.get("Jin Jay");
         double balance2 = hm.get("Jolly James");
         hm.put("Jin Jay", 60.0);
@@ -26,10 +27,9 @@ class HashMapDemo {
         System.out.println(STR."Jin Jay: \{hm.get("Jin Jay")}");
         System.out.println(STR."Jolly James: \{hm.get("Jolly James")}");
         System.out.println(hm.toString());
+
     }
 }
-
-
 
 public class MapClasses {
 }
