@@ -111,17 +111,5 @@ public class Chapter_II {
         float weight = myBoxes.getTotalWeight();
         System.out.printf("%s\n%.2f\n%.2f\n%d\n",myBoxes, price, weight, es);
 
-        /*
-        Runtime r = Runtime.getRuntime();
-        System.out.println(Runtime.version());
-        Process p = null;
-        try {
-            p = r.exec("explorer"); // Выполнение стандартных команд
-            ProcessBuilder proc = new ProcessBuilder("notepad.exe", "test file");
-            proc.start();
-        } catch (Exception e) {
-          System.out.println("A!!!!");
-        }
-        */
     }
 }
