@@ -80,7 +80,7 @@ public class Creator {
         System.out.println("END");
         Module myModule = Creator.class.getModule();
         System.out.println(STR."Module: \{myModule.getName()}");
-        System.out.println("Packages:");
+        System.out.print("Packages: ");
         for (String pkg : myModule.getPackages()) {
             System.out.println(STR."\{pkg} ");
         }
