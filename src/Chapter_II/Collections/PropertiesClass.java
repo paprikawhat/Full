@@ -20,7 +20,7 @@ class PhoneBook {
                 fileInputStream.close();
             }
         } catch (IOException e) {
-            System.out.println("Error!");
+            System.out.println("Error of loading!");
         }
         do {
             System.out.print("\nEnter name(q to quit): ");
