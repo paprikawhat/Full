@@ -11,6 +11,7 @@ public class ScannerClass {
         int count = 0;
         double sum = 0;
         String testString = "This is a string for: testing findLine in Scanner class .";
+
         Scanner strScan = new Scanner(testString);
         strScan.findInLine("for:");
         if(strScan.hasNext()) {
@@ -19,10 +20,12 @@ public class ScannerClass {
             System.out.println("Error mf!");
         }
         strScan.close();
-        FileReader fileReader = new FileReader("ScannerTest.txt");
+
         FileWriter fileOut = new FileWriter("ScannerTest.txt");
-        fileOut.write("524, 457, 325, 132, 327, 435, done");
+        fileOut.write("524, 457, 325, 132, 327, 435, 41, 6, 1, 4, done");
         fileOut.close();
+
+        FileReader fileReader = new FileReader("ScannerTest.txt");
         Scanner scanFromFile = new Scanner(fileReader);
 
         System.out.println(scanFromFile.delimiter());
