@@ -31,7 +31,6 @@ public class FileOutputStreamDemo {
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-
         }
     }
 }

@@ -16,34 +16,38 @@ class MyFileNameFilter implements FilenameFilter {
 
 public class FileClass {
     static void p(String s) {
-        System.out.println(s);
+        System.out.print(s);
     }
     public static void main(String[] args) {
-        String dirName = "C:\\Users\\papri\\Full";
+        String dirName = "C:\\Users\\papri\\Full\\src\\Chapter_I\\IO";
         File file1 = new File("C:\\Users\\papri\\Full");
         File file2 = new File(dirName);
-        MyFileNameFilter filter = new MyFileNameFilter("dat");
-
-        p(file1.getAbsolutePath());
-        p(file1.getPath());
+        MyFileNameFilter filterPng = new MyFileNameFilter("png");
+        MyFileNameFilter filterDat = new MyFileNameFilter("dat");
         p(file1.exists() ? "exist" : "don't exist");
+        System.out.println();
         p(file2.exists() ? "exist" : "don't exist");
-        p(file1.getName());
-        p(file2.getName());
-        p(file1.isDirectory() ? " dir" : " not dir");
+        System.out.println();
+        p(file1.getName()+" ");
+        p(file1.getAbsolutePath()+"\n");
+        p(file2.getName()+" ");
+        p(file2.getPath()+"\n");
+        p("File 1 is " + (file1.isDirectory() ? "dir" : "not dir")+"\n");
         System.out.println();
 
-        String[] fileDir = file1.list(filter);
+        String[] fileDir = file1.list(filterPng);
         if (fileDir == null) throw new AssertionError();
         for (String string : fileDir) {
             System.out.println(STR."???   \{string}   ???");
         }
-        if(file2.isDirectory()) {
-            String[] fileList = file2.list();
-            for (int i = 0; i < fileList.length; i++) {
-                File f = new File(dirName + "\\" + fileList[i]);
-                if(f.isDirectory()) System.out.println(fileList[i] + " dir");
-                else System.out.println(fileList[i] + " file");
+        System.out.println();
+
+        if(file1.isDirectory()) {
+            String[] fileList = file1.list(filterDat);
+            for (String string : fileList) {
+                File f = new File(dirName + "\\" + string);
+                if (f.isDirectory()) System.out.println(string + " dir");
+                else System.out.println(string + " file");
             }
         }
         else System.out.println(dirName + " not a dir");
