@@ -4,7 +4,7 @@ import java.io.*;
 
 class ByteArrayInputStreamReset {
     public static void main(String[] args) {
-        String str = "How more times i'll have to rewrite those strings?";
+        String str = "How more times do i have to rewrite this strings?";
         byte[] buf = str.getBytes();
         ByteArrayInputStream in = new ByteArrayInputStream(buf);
         for (int i = 0; i < 2; i++) {
