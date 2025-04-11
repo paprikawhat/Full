@@ -9,12 +9,11 @@ import java.nio.file.Path;
 
 public class MappedChannelRead {
     public static void main(String[] args) {
-        try (FileChannel fc =
-                     (FileChannel) Files.newByteChannel(Path.of("file_1_ch2_IO.txt")))
+        try (FileChannel fc = (FileChannel) Files.newByteChannel(Path.of("Full.iml")))
         {
             long size = fc.size();
             MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_ONLY, 0, size);
-            for (int i = 0; i < size; i++) {
+            while (mbb.hasRemaining()) {
                 System.out.print((char) mbb.get());
             }
         } catch (InvalidPathException | IOException e) {
