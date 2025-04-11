@@ -18,6 +18,7 @@ public class FileClass {
     static void p(String s) {
         System.out.print(s);
     }
+
     public static void main(String[] args) {
         String dirName = "C:\\Users\\papri\\Full\\src\\Chapter_I\\IO";
         File file1 = new File("C:\\Users\\papri\\Full");

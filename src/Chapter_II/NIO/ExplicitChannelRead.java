@@ -5,9 +5,12 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.*;
 
+
 public class ExplicitChannelRead {
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         int count;
+
         try (SeekableByteChannel fileChannel =
                      Files.newByteChannel(Path.of("file_1_ch2_IO.txt")))
         {
@@ -15,13 +18,17 @@ public class ExplicitChannelRead {
             do {
                 count = fileChannel.read(bb);
                 if (count != -1) {
-                    bb.rewind();
-                    for (int i = 0; i < count; i++)
+                    bb.flip();
+                    while (bb.hasRemaining()) {
                         System.out.print((char) bb.get());
+                    }
+                    bb.clear();
                 }
             } while (count != -1);
         } catch (InvalidPathException | IOException e) {
             System.out.println(e.getMessage());
         }
+        long end = System.currentTimeMillis();
+        System.out.println("\n" + (end - start));
     }
 }

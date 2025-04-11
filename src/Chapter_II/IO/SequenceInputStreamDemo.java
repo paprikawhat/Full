@@ -32,7 +32,7 @@ public class SequenceInputStreamDemo {
         Vector<String> files = new Vector<>();
         files.addElement("file_byteArray_IO");
         files.addElement("File");
-        files.addElement("file2");
+        files.addElement("file2_RW_IO");
         InputStreamEnumeration ise = new InputStreamEnumeration(files);
         InputStream sis = new SequenceInputStream(ise);
         try {

@@ -23,9 +23,9 @@ class FileWriterDemo {
         String str = "OMG not again! Another one string!";
         char[] chars = new char[str.length()];
         str.getChars(0, str.length(), chars, 0);
-        try (FileWriter fr1 = new FileWriter("file1");
-             FileWriter fr2 = new FileWriter("file2");
-             FileWriter fr3 = new FileWriter("file3"))
+        try (FileWriter fr1 = new FileWriter("file1_RW_IO");
+             FileWriter fr2 = new FileWriter("file2_RW_IO");
+             FileWriter fr3 = new FileWriter("file3_RW_IO"))
         {
             fr1.write(chars);
             fr2.write(str + "   !!!   Injected string   !!!");
