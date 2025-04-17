@@ -42,7 +42,6 @@ public class WriteServer {
             System.out.println("Recived: " + new String(p.getData(), 0, p.getLength()));
         }
     }
-
     public static void main(String[] args) throws IOException {
         if(args.length == 1) {
             ds = new DatagramSocket(serverPort);
