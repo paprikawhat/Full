@@ -20,6 +20,10 @@ public class BorderLayoutDemo extends Frame {
         add(new TextArea(msg), BorderLayout.CENTER);
         addWindowListener(new MyWindowAdapter());
     }
+    // Для использования отступов
+    public Insets getInsets() {
+        return new Insets(40, 20,10,20);
+    }
     public static void main(String[] args) {
         BorderLayoutDemo bld = new BorderLayoutDemo();
         bld.setSize(new Dimension(400,400));

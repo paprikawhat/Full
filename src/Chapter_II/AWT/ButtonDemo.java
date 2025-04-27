@@ -65,6 +65,7 @@ class ButtonList extends Frame implements ActionListener {
     public void paint(Graphics g) {
         g.drawString(msg, 60, 120);
     }
+
     public static void main(String[] args) {
         ButtonList bl = new ButtonList();
         bl.setSize(300,300);

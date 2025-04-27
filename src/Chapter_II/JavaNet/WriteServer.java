@@ -14,6 +14,7 @@ public class WriteServer {
 
     public static void TheServer() throws IOException {
         System.out.println("Server is running. (Ctrl+C to exit)");
+        System.out.println();
         int pos = 0;
         while (true) {
             if(System.in.available() > 0) {
