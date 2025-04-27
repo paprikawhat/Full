@@ -12,6 +12,11 @@ class Q {
                 System.out.println("Перехвачено исключение IE.");
             }
         }
+        try {
+            wait(1000);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage() );
+        }
         this.n = n;
         valueSet = true;
         System.out.println(STR."Помещено: \{n}");
@@ -25,9 +30,14 @@ class Q {
                 System.out.println("Перехвачено исключение IE.");
             }
         }
-            System.out.println(STR."Извлечено: \{n}");
-            valueSet = false;
-            notify();
+        try {
+            wait(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage() );
+        }
+        System.out.println(STR."Извлечено: \{n}");
+        valueSet = false;
+        notify();
     }
 }
 // Объект для реализации потока производителя.
@@ -41,9 +51,9 @@ class Producer implements Runnable{
     @Override //
     public void run() {
         int i = 0;
-            while(true) {
-                q.put(i++);
-            }
+        while(true) {
+            q.put(i++);
+        }
     }
 }
 // Объект для реализации потока потребителя.
@@ -54,7 +64,6 @@ class  Consumer implements Runnable{
         this.q = q;
         t = new Thread(this, "Consumer");
     }
-
     @Override
     public void run() {
         while(true) { // Поток бесконечного выполнения.

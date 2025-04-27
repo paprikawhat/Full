@@ -31,7 +31,7 @@ public class XORGraphics extends Frame {
         g.setColor(Color.RED);
         g.fillRect(60,120,160,110);
 
-        g.setXORMode(Color.BLACK);
+        g.setXORMode(Color.YELLOW);
         g.drawLine(chsX-10, chsY,chsX+10, chsY);
         g.drawLine(chsX, chsY-10, chsX,chsY+10);
         g.setPaintMode();
