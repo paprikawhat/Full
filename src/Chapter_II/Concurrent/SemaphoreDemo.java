@@ -26,6 +26,7 @@ class IncThread implements Runnable {
             sem.acquire();
             System.out.println(name + " got permission");
             for (int i = 0; i < 5; i++) {
+                Thread.sleep(500);
                 SharedResource.count++;
                 System.out.println(name + ": " + SharedResource.count);
                 // Переключить контекст по возможности
@@ -52,6 +53,7 @@ class DecThread implements Runnable{
             sem.acquire();
             System.out.println(name + " got permission");
             for (int i = 0; i < 5; i++) {
+                Thread.sleep(500);
                 SharedResource.count--;
                 System.out.println(name + ": " + SharedResource.count);
                 Thread.sleep(10);

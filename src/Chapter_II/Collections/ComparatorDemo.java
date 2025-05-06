@@ -1,6 +1,8 @@
 package src.Chapter_II.Collections;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 class CompByLastName implements Comparator<String> {
@@ -19,7 +21,7 @@ class CompByLastName implements Comparator<String> {
     }
 }
 class CompByFirstName implements Comparator<String> {
-    public int compare(String aStr, String bStr) {
+    public int compare(@NotNull String aStr, String bStr) {
        return aStr.compareToIgnoreCase(bStr);
     }
 }

@@ -12,9 +12,6 @@ class MyClass {
     MyClass(int v) {
         val = v;
     }
-    MyClass() {
-        val = 0;
-    }
     int getVal() {
         return val;
     }

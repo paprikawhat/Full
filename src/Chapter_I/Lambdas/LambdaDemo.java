@@ -12,10 +12,8 @@ class DemoTest {
         NumTest isEven = (n) -> (n%2) == 0;
         NumTest isNegative = (n) -> n < 0;
         if(isEven.test(5)) System.out.println("Yes");
-        if(isNegative.test(48)) System.out.println("Yes");
+        if(isNegative.test(-48)) System.out.println("Yes");
     }
-
-
 }
 
 class DemoSomeFunction {
