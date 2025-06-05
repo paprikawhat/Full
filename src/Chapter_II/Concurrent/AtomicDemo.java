@@ -5,7 +5,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AtomicDemo {
     public static void main(String[] args) {
         new Thread(new AtomThread("A")).start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         new Thread(new AtomThread("B")).start();
+
         new Thread(new AtomThread("C")).start();
     }
 }

@@ -16,21 +16,23 @@ public class WriteServer {
         System.out.println("Server is running. (Ctrl+C to exit)");
         System.out.println();
         int pos = 0;
+        int c;
         while (true) {
-            if(System.in.available() > 0) {
-                int c = System.in.read();
-                switch (c) {
-                    case '\r' -> {}
-                    case '\n' -> {
-                        ds.send(new DatagramPacket(buffer, pos, InetAddress.getLocalHost(), clientPort));
-                        pos = 0;
-                    }
-                    case -1 -> {
-                        System.out.println("Server shutdown session");
-                        ds.close();
-                        return;
-                    }
-                    default -> buffer[pos++] = (byte) c;
+            c = System.in.read();
+            switch (c) {
+                case '\r' -> {}
+                case '\n' -> {
+                    ds.send(new DatagramPacket(buffer, pos, InetAddress.getLocalHost(), clientPort));
+                    pos = 0;
+                    System.out.println();
+                }
+                case -1 -> {
+                    System.out.println("Server shutdown session");
+                    ds.close();
+                    return;
+                }
+                default -> {
+                    buffer[pos++] = (byte) c;
                 }
             }
         }
@@ -40,7 +42,7 @@ public class WriteServer {
         while (true) {
             DatagramPacket p = new DatagramPacket(buffer, buffer.length);
             ds.receive(p);
-            System.out.println("Recived: " + new String(p.getData(), 0, p.getLength()));
+            System.out.println("Received: " + new String(p.getData(), 0, p.getLength()));
         }
     }
     public static void main(String[] args) throws IOException {
