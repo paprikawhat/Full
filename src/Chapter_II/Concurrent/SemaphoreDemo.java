@@ -9,9 +9,11 @@ public class SemaphoreDemo {
         new Thread(new DecThread(semaphore, "B")).start();
     }
 }
+
 class SharedResource {
     static int count = 0;
 }
+
 class IncThread implements Runnable {
     String name;
     Semaphore sem;
@@ -39,6 +41,7 @@ class IncThread implements Runnable {
         sem.release();
     }
 }
+
 class DecThread implements Runnable{
     String name;
     Semaphore sem;

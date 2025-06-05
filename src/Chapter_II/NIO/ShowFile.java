@@ -17,7 +17,7 @@ public class ShowFile {
             do {
                 i = fc.read();
                 if(i != -1) {
-                    System.out.println((char) i);
+                    System.out.print((char) i);
                 }
             } while (i != -1);
         } catch (InvalidPathException | IOException e) {
