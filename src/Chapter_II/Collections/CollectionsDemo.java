@@ -19,7 +19,7 @@ class Cat implements Comparable<Cat>{
         this.age = age;
     }
     public String toString() {
-        return STR."\{color} is \{age}y.o.";
+        return color + " is " + age + "y.o.";
     }
 
     @Override
@@ -45,25 +45,25 @@ public class CollectionsDemo {
             cats.add(new Cat("Brown", 4));
         } // Заполнение листа кошек
         System.out.println(cats.get(2));
-        System.out.println(STR."UNSORTED: \{cats}\n");
+        System.out.println("UNSORTED: " + cats + "\n");
 
         cats.sort(Comparator.naturalOrder());
-        System.out.println(STR."SORTED BY COMPARE: \{cats}");
+        System.out.println("SORTED BY COMPARE: " + cats);
         System.out.println();
 
-        System.out.println(STR."SORTED BY AGE: \{cats}");
+        System.out.println("SORTED BY AGE: " + cats);
         System.out.println();
 
         Collections.sort(cats);
-        System.out.println(STR."SORTED AGAIN: \{cats}\n");
+        System.out.println("SORTED AGAIN: " + cats + "\n");
 
-        System.out.println(STR."MAX AND MIN: \{Collections.max(cats)} \{Collections.min(cats)}");
+        System.out.println("MAX AND MIN: " + Collections.max(cats) + " " + Collections.min(cats));
         System.out.println();
         // Spliterator
         Spliterator<Cat> catSpliterator = cats.spliterator();
         for(Cat cat : cats) catSpliterator.tryAdvance(System.out::println);
         long end = System.currentTimeMillis();
         System.out.println();
-        System.out.println(STR."Milliseconds from start to end \{end - start}");
+        System.out.println("Milliseconds from start to end " + (end - start));
     }
 }

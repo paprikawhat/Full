@@ -21,13 +21,13 @@ class HashMapDemo {
 
         Set<Map.Entry<String, Double>> set = hm.entrySet();
         for (Map.Entry<String, Double> me : set) {
-            System.out.print(STR."\{me.getKey()}: ");
+            System.out.print(me.getKey() + ": ");
             System.out.println(me.getValue());
         }
         Set<String> htNameSet = ht.keySet();
         Iterator<String> stringIterator = htNameSet.iterator();
         for(String s : htNameSet.toArray(new String[0])) {
-            System.out.println(STR."\{s}       ~W|W|W~");
+            System.out.println(s + "       ~W|W|W~");
         }
         System.out.println();
         // Получение доступа к значению ключа через присваивание ссылки.
@@ -35,8 +35,8 @@ class HashMapDemo {
         double balance2 = ht.get("Jolly James");
         hm.put("Jin Jay", balance1 + 1000.0);
         ht.put("Jolly James", balance2 + 1000.0);
-        System.out.println(STR."Jin Jay: \{hm.get("Jin Jay")}");
-        System.out.println(STR."Jolly James: \{ht.get("Jolly James")}");
+        System.out.println("Jin Jay: " + hm.get("Jin Jay"));
+        System.out.println("Jolly James: " + ht.get("Jolly James"));
         System.out.println(hm);
     }
 }

@@ -30,7 +30,7 @@ class EnumDemo2 {
         Apple ap;
         System.out.println("Все яблоки и цены:");
         for(Apple a : Apple.values()) {
-            System.out.println(STR."Яблоки \{a} стоят \{a.getPrice()} копеек.");
+            System.out.println("Яблоки " + a + " стоят " + a.getPrice() + " копеек.");
 
         }
     }
@@ -40,7 +40,7 @@ class EnumDemo3 {
         Apple ap1, ap2, ap3;
         System.out.println("Все константы в Apple:");
         for(Apple a : Apple.values()) {
-            System.out.println(STR."\{a} \{a.ordinal()}");
+            System.out.println(a + " " + a.ordinal());
         }
         ap1 = Apple.Sweet;
         ap2 = Apple.Sour;

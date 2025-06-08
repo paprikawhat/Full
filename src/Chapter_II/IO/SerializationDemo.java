@@ -19,7 +19,7 @@ class MyClass implements Serializable {
 
     @Override
     public String toString() {
-        return STR."\{s} : \{i} : \{b}";
+        return s + " : " + i + " : " + b;
     }
 }
 
