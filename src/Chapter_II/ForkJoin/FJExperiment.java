@@ -39,14 +39,15 @@ public class FJExperiment {
         pLVL = Integer.parseInt(args[0]);
         threshold = Integer.parseInt(args[1]);
         long beginT, endT;
-        ForkJoinPool fjp = new ForkJoinPool(pLVL);
-        double[] numbs = new double[10_000_000];
-        for(int i = 0; i < numbs.length; i++) {
-            numbs[i] = (double) i;
+        try (ForkJoinPool fjp = new ForkJoinPool(pLVL)) {
+            double[] numbs = new double[10_000_000];
+            for (int i = 0; i < numbs.length; i++) {
+                numbs[i] = (double) i;
+            }
+            Transform task = new Transform(numbs, 0, numbs.length, threshold);
+            beginT = System.nanoTime();
+            fjp.invoke(task);
         }
-        Transform task = new Transform(numbs, 0, numbs.length, threshold);
-        beginT = System.nanoTime();
-        fjp.invoke(task);
         endT = System.nanoTime();
         System.out.println("Parallelism level: " + pLVL);
         System.out.println("Threshold is: " + threshold);

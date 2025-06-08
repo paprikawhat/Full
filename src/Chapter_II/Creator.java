@@ -6,7 +6,7 @@ class NewThread extends Thread {
     boolean flag = false;
     NewThread(String name, ThreadGroup group) {
         super(group, name);
-        System.out.println(STR."New thread: \{this}");
+        System.out.println("New thread: " + this);
     }
     synchronized public void mySuspend() {
         flag = true;
@@ -19,7 +19,7 @@ class NewThread extends Thread {
     public void run() {
         try {
             for (int i = 5; i > 0; i--) {
-                System.out.println(STR."\{getName()}:\{i}");
+                System.out.println(getName() + ":" + i);
                 Thread.sleep(1000);
                 synchronized (this) {
                     while (flag) {
@@ -28,9 +28,9 @@ class NewThread extends Thread {
                 }
             }
         } catch (Exception e) {
-            System.out.println(STR."Exception in \{getName()}");;
+            System.out.println("Exception in " + getName());;
         }
-        System.out.println(STR."\{getName()} ended work.");
+        System.out.println(getName() + " ended work.");
     }
 }
 
@@ -79,10 +79,10 @@ public class Creator {
         }
         System.out.println("END");
         Module myModule = Creator.class.getModule();
-        System.out.println(STR."Module: \{myModule.getName()}");
+        System.out.println("Module: " + myModule.getName());
         System.out.print("Packages: ");
         for (String pkg : myModule.getPackages()) {
-            System.out.println(STR."\{pkg} ");
+            System.out.println(pkg + " ");
         }
     }
 }

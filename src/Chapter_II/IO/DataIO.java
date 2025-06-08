@@ -27,7 +27,7 @@ public class DataIO {
             int i1 = dIn.readInt();
             double d = dIn.readDouble();
             int i2 =dIn.readInt();
-            System.out.println(STR."\{i}, \{i1}, \{i2} : \{b} : \{d}");
+            System.out.println(i + ", " + i1 + ", " + i2 + " : " + b + " : " + d);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             return;

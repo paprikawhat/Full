@@ -33,11 +33,7 @@ public class URLClass {
         System.out.println();
 
         HttpURLConnection huc = (HttpURLConnection) URI.create(g).toURL().openConnection();
-        System.out.println(STR."""
-                Response code: \{huc.getResponseCode()}
-                Message: \{huc.getResponseMessage()}
-                Method: \{huc.getRequestMethod()}
-                """);
+        System.out.println("Response code: " + huc.getResponseCode() + "\nMessage: " + huc.getResponseMessage() + "\nMethod: " + huc.getRequestMethod() + "\n");
         Map<String, List<String>> fields = huc.getHeaderFields();
         Set<String> list = fields.keySet();
         for(String s : list) {

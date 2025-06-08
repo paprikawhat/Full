@@ -53,12 +53,12 @@ public class ComparatorDemo {
         // Получение набора элементов карты
         Set<Map.Entry<String, Double>> set = nameSalaryMap.entrySet();
         for (Map.Entry<String, Double> me : set) {
-            System.out.print(STR."\{me.getKey()}: $");
+            System.out.print(me.getKey() + ": $");
             System.out.println(me.getValue());
         }
         System.out.println("  *******************");
         double balanceOfBulk = nameSalaryMap.get("Bulk Murz");
-        System.out.println(STR."New Bulk balance = \{balanceOfBulk + 1000}");
+        System.out.println("New Bulk balance = " + (balanceOfBulk + 1000));
         System.out.println("  *******************");
         Comparator<String> mc = String::compareTo;
         TreeSet<String> treeSet = new TreeSet<>(mc.reversed());
@@ -68,7 +68,7 @@ public class ComparatorDemo {
         treeSet.add("E");
         treeSet.add("D");
         for (String e : treeSet) {
-            System.out.println(STR."\{e} ");
+            System.out.println(e + " ");
         }
     }
 }

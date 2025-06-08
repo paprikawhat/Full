@@ -19,7 +19,7 @@ class Q {
         }
         this.n = n;
         valueSet = true;
-        System.out.println(STR."Помещено: \{n}");
+        System.out.println("Помещено: " + n);
         notify();
     }
     synchronized void get() {
@@ -35,7 +35,7 @@ class Q {
         } catch (InterruptedException e) {
             System.out.println(e.getMessage() );
         }
-        System.out.println(STR."Извлечено: \{n}");
+        System.out.println("Извлечено: " + n);
         valueSet = false;
         notify();
     }

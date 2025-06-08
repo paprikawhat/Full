@@ -62,9 +62,7 @@ public class PropertiesClass {
         cities.setProperty("Волгоградская область","Волгоград");
         Set<?> states = cities.keySet();
         for(Object city : states) {
-            System.out.println(STR."""
-        [Регион: \{city}.Солица: \{cities.getProperty((String) city)}.]\
-   """);
+            System.out.println("[Регион: " + city + ".Солица: " + cities.getProperty((String) city) + ".]");
         }
         System.out.println();
         String str = cities.getProperty("Московская область","    ~!???~");

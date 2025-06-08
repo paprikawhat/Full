@@ -12,7 +12,7 @@ public class MouseEventDemo extends Frame implements MouseListener, MouseMotionL
               addWindowListener(new MyWindowAdapter());
        }
        public void mouseClicked(MouseEvent e) {
-              msg = STR."\{msg}--click recived";
+              msg = msg + "--click recived";
               repaint();
        }
        public void mousePressed(MouseEvent e) {

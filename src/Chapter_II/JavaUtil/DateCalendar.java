@@ -23,11 +23,11 @@ class CalendarDemo {
         System.out.println(months[calendar.get(Calendar.MONTH)]);
         System.out.println(calendar.get(Calendar.DATE));
         System.out.println(calendar.get(Calendar.YEAR));
-        System.out.println(STR."TIME : \{Calendar.HOUR}:\{Calendar.MINUTE}:\{Calendar.SECOND}");
+        System.out.println("TIME : " + Calendar.HOUR + ":" + Calendar.MINUTE + ":" + Calendar.SECOND);
         calendar.set(Calendar.HOUR, 7);
         calendar.set(Calendar.MINUTE, 22);
         calendar.set(Calendar.SECOND, 22);
-        System.out.println(STR."TIME : \{calendar.get(Calendar.HOUR)}:\{calendar.get(Calendar.MINUTE)}:\{calendar.get(Calendar.SECOND)}");
+        System.out.println("TIME : " + calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND));
 
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         System.out.println(year = gregorianCalendar.get(Calendar.YEAR));

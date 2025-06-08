@@ -30,7 +30,7 @@ class MyBox {
     }
     @Override
     public String toString() {
-        return STR."\{name} \{getPrice()}";
+        return name + " " + getPrice();
     }
     MyBox() {
         Random random = new Random();

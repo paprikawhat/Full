@@ -39,7 +39,7 @@ public class FileClass {
         String[] fileDir = file1.list(filterPng);
         if (fileDir == null) throw new AssertionError();
         for (String string : fileDir) {
-            System.out.println(STR."???   \{string}   ???");
+            System.out.println("???   " + string + "   ???");
         }
         System.out.println();
 
