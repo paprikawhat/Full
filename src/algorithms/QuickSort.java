@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void sort(int[] array) {
-        sortInternal(array, 0, array.length - 1);
+        sort(array, 0, array.length - 1);
     }
-    public static void sortInternal(int[] array, int from, int to) {
+    private static void sort(int[] array, int from, int to) {
         if (from < to) {
-            int divide = partition(array, from, to);
-            sortInternal(array, from, divide - 1);
-            sortInternal(array, divide, to);
+            int divider = partition(array, from, to);
+            sort(array, from, divider - 1);
+            sort(array, divider, to);
         }
     }
     private static int partition(int[] array, int from, int to) {
@@ -39,7 +39,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] array = RandInt.createArray(100);
+        int[] array = RandomIntArray.createArray(100);
         QuickSort.sort(array);
         System.out.println(Arrays.toString(array));
     }

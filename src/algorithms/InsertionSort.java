@@ -1,7 +1,6 @@
 package src.algorithms;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class InsertionSort {
     public static void sort(int[] array) {
@@ -18,14 +17,9 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        int[] array = new int[100];
-        Random random = new Random();
-        for(int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(1,1_000);
-        }
-        InsertionSort.sort(array);
-        System.out.println(Arrays.toString(array));
+        int[] array = RandomIntArray.createArray(100);
         long end = System.currentTimeMillis();
+        System.out.println(Arrays.toString(array));
         System.out.println(end - start);
     }
 }
