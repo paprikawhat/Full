@@ -39,7 +39,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] array = RandomIntArray.createArray(100);
+        int[] array = ArrayOfRandom.createIntArray(100);
         QuickSort.sort(array);
         System.out.println(Arrays.toString(array));
     }

@@ -20,7 +20,7 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int[] array = RandomIntArray.createArray(100);
+        int[] array = ArrayOfRandom.createIntArray(100);
         BubbleSort.sort(array);
         System.out.println(Arrays.toString(array));
     }

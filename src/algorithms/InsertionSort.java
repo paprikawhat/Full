@@ -17,7 +17,7 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        int[] array = RandomIntArray.createArray(100);
+        int[] array = ArrayOfRandom.createIntArray(100);
         long end = System.currentTimeMillis();
         System.out.println(Arrays.toString(array));
         System.out.println(end - start);

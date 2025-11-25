@@ -44,7 +44,7 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] array = RandomIntArray.createArray(100);
+        int[] array = ArrayOfRandom.createIntArray(100);
         MergeSort.sort(array);
         System.out.println(Arrays.toString(array));
     }
